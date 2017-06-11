@@ -48,12 +48,15 @@ class BTCWalletWatcher
         return $this->get("https://blockchain.info/q/addressbalance/" . $this->addr);
     }
 
+<<<<<<< HEAD
     public function btc_v2(){
         return $this->btc_ask("https://blockexplorer.com/api/addr/" . $this->addr, "balance");
     }
 
 
 
+=======
+>>>>>>> 16f1cf266f9cbfb9558c02d59a42bd4434394e45
     public function getWalletBalance(){
 
         $satoshi_value = $this->btc();
