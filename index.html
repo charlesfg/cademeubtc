@@ -13,11 +13,6 @@
 ?>
 <h1> Saldo da Carteira <?php echo $addr ?></h1>
 
-<h2>Api 1 </h2>
-<b>BTC</b>: <?php echo $cls->btc_v2() ?>  <br><br>
-<h2>Api 2 </h2>
-<b>BTC </b>: <?php echo $balance[0] ?>  <br>
-
 <p>
     <b>BTC Value </b>: <?php echo $balance[0] ?>  <br>
     <b>BRL Value </b>: <?php echo $balance[1] ?>  <br>
@@ -34,16 +29,5 @@
 </p>
 
 <hr>
-<h1>Php Info</h1>
-<?php
-
-// Mostra todas as informações, usa o padrão INFO_ALL
-phpinfo();
-
-// Mostra apenas informações dos módulos.
-// phpinfo(8) mostra um resultado identico.
-phpinfo(INFO_MODULES);
-
-?>
 </body>
 </html>
