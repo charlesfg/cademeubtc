@@ -16,10 +16,12 @@ class BTCWalletWatcher
     }
 
     private function get($url){
+        echo "-- $url<br> ";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
         $content = curl_exec($ch);
+        echo "-- $content<br> ";
         curl_close($ch);
         return $content;
     }
@@ -42,9 +44,19 @@ class BTCWalletWatcher
         return $this->btc_ask("https://api.blinktrade.com/api/v1/BRL/ticker");
     }
 
+    public function btc(){
+        return $this->get("https://blockchain.info/q/addressbalance/" . $this->addr);
+    }
+
+    public function btc_v2(){
+        return $this->btc_ask("https://blockexplorer.com/api/addr/" . $this->addr, "balance");
+    }
+
+
+
     public function getWalletBalance(){
 
-        $satoshi_value = $this->get("https://blockchain.info/q/addressbalance/" . $this->addr);
+        $satoshi_value = $this->btc();
         $btc_value = $this->satoshi_to_btc($satoshi_value);
         $brl_value = $btc_value * $this->btc_brl();
         $usd_value = $btc_value * $this->btc_usd();
