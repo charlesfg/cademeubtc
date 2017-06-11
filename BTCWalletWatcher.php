@@ -16,18 +16,18 @@ class BTCWalletWatcher
     }
 
     private function get($url){
-        echo "-- $url<br> ";
+//        echo "-- $url<br> ";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
         $content = curl_exec($ch);
-        echo "-- $content<br> ";
+//        echo "-- $content<br> ";
         curl_close($ch);
         return $content;
     }
 
     public function satoshi_to_btc($sat){
-        return $sat / (float) 100000000;
+        return (int) $sat / (float) 100000000;
     }
 
     public function btc_usd(){
@@ -55,7 +55,7 @@ class BTCWalletWatcher
 
     public function getWalletBalance(){
 
-        $satoshi_value = $this->btc();
+        $satoshi_value = (int) $this->btc();
         $btc_value = $this->satoshi_to_btc($satoshi_value);
         $brl_value = $btc_value * $this->btc_brl();
         $usd_value = $btc_value * $this->btc_usd();

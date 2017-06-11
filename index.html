@@ -12,14 +12,18 @@
  $balance = $cls->getWalletBalance();
 ?>
 <h1> Saldo da Carteira <?php echo $addr ?></h1>
+
+<h2>Api 1 </h2>
+<b>BTC</b>: <?php echo $cls->btc_v2() ?>  <br><br>
+<h2>Api 2 </h2>
+<b>BTC </b>: <?php echo $balance[0] ?>  <br>
+
 <p>
-
-    <b>BTC v2 </b>: <?php echo $cls->btc_v2() ?>  <br><br>
-
     <b>BTC Value </b>: <?php echo $balance[0] ?>  <br>
     <b>BRL Value </b>: <?php echo $balance[1] ?>  <br>
     <b>USD Value </b>: <?php echo $balance[2] ?>  <br>
 </p>
+
 <h1> Cotação Bitcoin </h1>
 <p>
     <b>BTC USD </b>: <?php echo $cls->btc_usd() ?>  <br>
