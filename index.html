@@ -9,7 +9,7 @@
  require_once('./BTCWalletWatcher.php');
  $addr = "1SaNDRopHuiimd6ZUEtfw2vigyCRpZHeU";
  $cls = new BTCWalletWatcher($addr);
- $balance = $cls->getWalletBalance()
+ $balance = $cls->getWalletBalance();
 ?>
 <h1> Saldo da Carteira <?php echo $addr ?></h1>
 <p>
@@ -26,5 +26,17 @@
     <b>BTC BRL </b>: <?php echo $cls->btc_brl() ?>  <br>
 </p>
 
+<hr>
+<h1>Php Info</h1>
+<?php
+
+// Mostra todas as informações, usa o padrão INFO_ALL
+phpinfo();
+
+// Mostra apenas informações dos módulos.
+// phpinfo(8) mostra um resultado identico.
+phpinfo(INFO_MODULES);
+
+?>
 </body>
 </html>
