@@ -42,9 +42,13 @@ class BTCWalletWatcher
         return $this->btc_ask("https://api.blinktrade.com/api/v1/BRL/ticker");
     }
 
+    public function btc(){
+        return $this->get("https://blockchain.info/q/addressbalance/" . $this->addr);
+    }
+
     public function getWalletBalance(){
 
-        $satoshi_value = $this->get("https://blockchain.info/q/addressbalance/" . $this->addr);
+        $satoshi_value = $this->btc();
         $btc_value = $this->satoshi_to_btc($satoshi_value);
         $brl_value = $btc_value * $this->btc_brl();
         $usd_value = $btc_value * $this->btc_usd();
